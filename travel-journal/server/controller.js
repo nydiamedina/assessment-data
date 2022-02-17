@@ -263,7 +263,8 @@ module.exports = {
             countries.name as country
             from cities
             inner join countries 
-            on cities.country_id = countries.country_id;
+            on cities.country_id = countries.country_id
+            order by rating desc;
         `).then((dbRes) => {
             res.status(200).send(dbRes[0]);
         }).catch(err => res.status(500).send(`An error occurred while getting cities. ${err}`));
