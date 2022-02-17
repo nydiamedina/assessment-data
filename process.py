@@ -12,6 +12,18 @@ def sales_reports(log_file):
         if day == "Mon":
             print(line)
 
+def get_melon_orders(log_file):
+    for line in log_file:
+        line = line.rstrip()
+        words = line.split(" ")
+        quantity = int(words[2])
+        item = words[3:-4]
+        if quantity > 10 and "Melon" in item:
+            print(line)
+
 # Function sales_report is called with the log_file from "um-server-01.txt"
 # as parameter
+print("Sales report")
 sales_reports(log_file)
+print("Melon orders")
+get_melon_orders(log_file)
