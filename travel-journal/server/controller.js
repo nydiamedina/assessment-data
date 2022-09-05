@@ -18,16 +18,16 @@ module.exports = {
             drop table if exists cities;
             drop table if exists countries;
 
-            create table countries (
-                country_id serial primary key, 
-                name varchar
-            );
-
             create table cities (
                 city_id serial primary key, 
                 name varchar,
                 rating integer,
                 country_id integer not null references countries(country_id)
+            );
+            
+            create table countries (
+                country_id serial primary key, 
+                name varchar
             );
 
             insert into countries (name)
